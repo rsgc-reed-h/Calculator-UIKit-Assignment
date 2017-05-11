@@ -31,6 +31,8 @@ class Calculator {
         operation = Operation.multiplication
         
         updateState()
+        
+        
     }
     
     /**
@@ -42,6 +44,8 @@ class Calculator {
         operation = Operation.division
         
         updateState()
+        
+        
     }
     
     /**
@@ -87,8 +91,8 @@ class Calculator {
      The current operation is performed on the computed value and the provided value.
      */
     func equals() {
-        
-        // Check operation type
+        print("equals is pressed")
+//         Check operation type
         if operation == Operation.multiplication {
             computedValue = computedValue! * Double(providedValue)!
         } else if operation == Operation.division {
@@ -101,7 +105,7 @@ class Calculator {
             // if the computed value is = to nil the program will crash if we attempt to unwrap. So this if statement checks if the input is = or != to nil and runs the code dependant on that
             if computedValue != nil {
                 computedValue = computedValue! * (0.01)
-            }   else    {
+            }   else   {
                 computedValue = 0
             }
         } else if operation == Operation.plusminus {
@@ -110,58 +114,63 @@ class Calculator {
                 computedValue = computedValue! * (-1)
             } else {
                 computedValue = 0
+                
             }
         }
-        // The operation selected has been performed, so get ready to receive new operation
-        // and new value
+        print(computedValue)
+        providedValue = ""
         operation = nil
-        providedValue = ""
-        
     }
+        /**
+         Makes the computed value become whatever value the user has typed into the calculator.
+         */
+        func makeProvidedValueComputedValue() {
+            
+            computedValue = Double(providedValue)
+            providedValue = ""
+        }
+        
+        /**
+         Resets the operation, provided value, and computed value.
+         */
+        func clear() {
+            
+            // Reset everthing
+            operation = nil
+            providedValue = ""
+            computedValue = nil
+        }
+        
+        // simple subtraction function
+        func subtraction() {
+            
+            operation = Operation.subtraction
+            
+            updateState()
+            
+            
+        }
+        
+        // addition function
+        func addition() {
+            
+            operation = Operation.addition
+            updateState()
+        }
+        
+        //plusminus function
+        func plusminus() {
+
+            equals()
+        }
     
-    /**
-     Makes the computed value become whatever value the user has typed into the calculator.
-     */
-    func makeProvidedValueComputedValue() {
-        
-        computedValue = Double(providedValue)
-        providedValue = ""
-    }
-    
-    /**
-     Resets the operation, provided value, and computed value.
-     */
-    func clear() {
-        
-        // Reset everthing
-        operation = nil
-        providedValue = ""
-        computedValue = nil
-        
-    }
-// simple subtraction function
-    func subtraction() {
-        operation = Operation.subtraction
-        updateState()
-    }
-// addition function
-    func addition() {
-        operation = Operation.addition
-        updateState()
-    }
-//plusminus function
-    func plusminus() {
-        operation = Operation.plusminus
-        updateState()
-        equals()
-       
-    }
-//percentage function
-    func percentage() {
+        //percentage function
+        func percentage() {
         operation = Operation.percentage
+            
         updateState()
+            
         equals()
-       
-    }
-    
+        }
+
 }

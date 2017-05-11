@@ -9,12 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-   
+    
     //outlet to the display
     @IBOutlet weak var LabelDisplay: UILabel!
-
     
-//Create an instance of the calculator class
+    
+    //Create an instance of the calculator class
     
     var model = Calculator()
     
@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         //clear the contents from the label
         LabelDisplay.text = ""
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -93,9 +93,9 @@ class ViewController: UIViewController {
     @IBAction func equals(_ sender: Any) {
         model.equals()
         if model.computedValue != nil {
-        LabelDisplay.text = String(describing: model.computedValue!)
-        LabelDisplay.text = String(format:"%g",model.computedValue!)
-    }
+            LabelDisplay.text = String(describing: model.computedValue!)
+            LabelDisplay.text = String(format:"%g",model.computedValue!)
+        }
     }
     @IBAction func divide(_ sender: Any) {
         model.divide()
@@ -116,13 +116,14 @@ class ViewController: UIViewController {
         model.percentage()
         LabelDisplay.text = String(format: "%g", model.computedValue!)
     }
-  
+    
     @IBAction func plusminus(_ sender: Any) {
         model.plusminus()
-        LabelDisplay.text = String(format: "%g", model.computedValue!)
+        LabelDisplay.text = String(format: "%g", model.providedValue)
+        
     }
     
     
-
+    
 }
 
