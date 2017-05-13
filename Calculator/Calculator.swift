@@ -14,7 +14,7 @@ class Calculator {
     var providedValue : String = ""
     var computedValue : Double? = nil
     var operation : Operation? = nil
-    var cv : Double?
+//    var cv : Double?
     
     // MARK: Initializer(s)
     
@@ -166,6 +166,7 @@ class Calculator {
         func addition() {
             
             operation = Operation.addition
+    
             updateState()
         }
         
@@ -173,18 +174,18 @@ class Calculator {
         func plusminus() {
             if providedValue == "" {
                 //store computedvalue
-               if var cv = computedValue {
+            if var cv = computedValue {
                 //times value by -1
-                cv = cv * -1
-                    providedValue = String(format: "%g", cv)
+            cv = cv * -1
+            providedValue = String(format: "%g", cv)
                 }
             }
             else {
                 //let cv = provided value
-               if var cv = Double(providedValue){
+            if var cv = Double(providedValue){
                 //times value by -1
-                    cv = cv * -1
-                    providedValue = String(format: "%g", cv)
+            cv = cv * -1
+            providedValue = String(format: "%g", cv)
                 }
             }
         }
