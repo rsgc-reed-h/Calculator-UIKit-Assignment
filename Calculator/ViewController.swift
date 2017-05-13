@@ -127,8 +127,7 @@ class ViewController: UIViewController {
     //If pressed display "plusminus"
     @IBAction func plusminus(_ sender: Any) {
         model.plusminus()
-        LabelDisplay.text = String(format: "%g", model.computedValue!)
-        
+        LabelDisplay.text = model.providedValue
     }
     
     

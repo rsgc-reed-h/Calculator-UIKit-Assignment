@@ -14,7 +14,7 @@ class Calculator {
     var providedValue : String = ""
     var computedValue : Double? = nil
     var operation : Operation? = nil
-    var shownValue = ""
+    var cv : Double?
     
     // MARK: Initializer(s)
     
@@ -123,29 +123,15 @@ class Calculator {
             
             computedValue = computedValue! * (0.01)
             
-        }   else   {
+        }else{
             
             computedValue = 0
             
             }
-            
-        } else if operation == Operation.plusminus {
-            // if the computed value is = to nil the program will crash if we attempt to unwrap. So this if statement checks if the input is = or != to nil and runs the code dependant on that
-            if computedValue != nil {
-                
-                computedValue = computedValue! * (-1)
-                
-            } else {
-                
-                computedValue = 0
-                
-            }
         }
-        
-        print(computedValue)
         providedValue = ""
         operation = nil
-    }
+       }
         /**
          Makes the computed value become whatever value the user has typed into the calculator.
          */
@@ -185,10 +171,22 @@ class Calculator {
         
         //plusminus function
         func plusminus() {
-            operation = Operation.plusminus
-            updateState()
-            equals()
-          
+            if providedValue == "" {
+                //store computedvalue
+               if var cv = computedValue {
+                //times value by -1
+                cv = cv * -1
+                    providedValue = String(format: "%g", cv)
+                }
+            }
+            else {
+                //let cv = provided value
+               if var cv = Double(providedValue){
+                //times value by -1
+                    cv = cv * -1
+                    providedValue = String(format: "%g", cv)
+                }
+            }
         }
     
         //percentage function
